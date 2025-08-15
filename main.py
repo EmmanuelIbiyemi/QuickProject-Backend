@@ -39,7 +39,7 @@ async def quickMessage():
 #--- This is for the sign up section to put value in the database
 @app.post("/Signup")
 def signup (user: Signup ,db: Session = Depends(get_db) ):
-    # try:
+    try:
         db_user = User(name=user.username, email=user.usermail , password=user.userpassword)
         db.add(db_user)
         db.commit()
@@ -50,9 +50,9 @@ def signup (user: Signup ,db: Session = Depends(get_db) ):
             return {"error: ", HTTPException(status_code=status.HTTP_409_CONFLICT)}
 
         return {"messgae: ", db_user}
-    # except:
-    #     print("Their is fire on the mountain")
-    #     return {"message: ", "Go check the code"}
+    except:
+        print("Their is fire on the mountain")
+        return {"message: ", "Go check the code"}
 
 
 
@@ -69,10 +69,10 @@ def login(Username:str , Password:int , db: Session = Depends(get_db)):
 
 @app.get("/checkusers")
 async def checkallusers(db: Session = Depends(get_db)):
-    # try:
+    try:
         checkusers = db.query(User).all()
         print(checkusers)
         return (checkusers)
-    # except:
-    #     print("Their is fire on the mountain")
-    # return {"message": "This is all the users"}
+    except:
+        print("Their is fire on the mountain")
+    return {"message": "This is all the users"}
