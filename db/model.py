@@ -11,4 +11,4 @@ class User(Base):
 
 Base.metadata.create_all(bind=engine)
 
-print("✅ Tables created successfully!")
+print("Table Created!")

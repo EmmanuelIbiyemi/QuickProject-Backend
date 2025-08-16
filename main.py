@@ -58,14 +58,26 @@ def signup (user: Signup ,db: Session = Depends(get_db) ):
 
 #--- This is for the log in section to fetch value in the database
 @app.get("/Login")
-def login(Username:str , Password:int , db: Session = Depends(get_db)):
+def login( Username:str, Password:int, db: Session = Depends(get_db) ):
+
+
+    # had to think of when the user like input some kind cap. letter
+    #  but taught of it late so i had to add it quickly to prevent any error
+    lower_User = Username.lower()
+
     try:
-        user = db.query(User).filter(User.name == Username, User.password == Password).first()
+        user = db.query(User).filter(User.name == lower_User, User.password == Password).first()
         if not user:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
+            return "User Not Found"
+            # raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
+
+        if user:
+            return "success"
+
     except:
         return {"message: ", "Error on the code"}
-    return {"message": f"Welcome Back {Username}"}
+
+    return {"message": f"Welcome Back {User.name}"}
 
 @app.get("/checkusers")
 async def checkallusers(db: Session = Depends(get_db)):
