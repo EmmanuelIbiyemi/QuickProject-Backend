@@ -1,4 +1,4 @@
 fastapi
-uvicorn
-sqlite 3.50.4
+uvicorn[standard]
+sqlite == 3.50.4
 sqlalchemy
