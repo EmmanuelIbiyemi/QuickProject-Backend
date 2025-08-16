@@ -39,8 +39,13 @@ async def quickMessage():
 #--- This is for the sign up section to put value in the database
 @app.post("/Signup")
 def signup (user: Signup ,db: Session = Depends(get_db) ):
+
+    # had to think of when the user like input some kind cap. letter
+    #  but taught of it late so i had to add it quickly to prevent any error
+    lower_User = user.username.lower()
+
     try:
-        db_user = User(name=user.username, email=user.usermail , password=user.userpassword)
+        db_user = User(name=lower_User, email=user.usermail , password=user.userpassword)
         db.add(db_user)
         db.commit()
         db.refresh(db_user)

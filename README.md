@@ -6,3 +6,7 @@ and sqlite
 learnt new things by the way
 about the yeild keyword and also some more things on the sqlite lib 
 Also install sqlite extension to be able to see my db tables and rows and columns and the likes
+
+
+# NOTE
+Did not add any kind of Field to the password but it's mostly in integer 
