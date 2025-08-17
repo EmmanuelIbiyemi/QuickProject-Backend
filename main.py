@@ -14,13 +14,11 @@ app = FastAPI(
     title="Quick Project"
 )
 
-origins =[
-    "*"
-]
+origins =["*"]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],# For production, this should be a specific list of frontend URLs
+    allow_origins=origins,# For production, this should be a specific list of frontend URLs
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
