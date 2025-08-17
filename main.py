@@ -14,9 +14,16 @@ app = FastAPI(
     title="Quick Project"
 )
 
+origins =[
+    "http://localhost:5173/",
+    "https://quick-project-frontend.vercel.app/"
+    "https://quick-project-front-git-1a5517-ibiyemiemmanuel68-3375s-projects.vercel.app/",
+    "*"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:9002", "*"],# For production, this should be a specific list of frontend URLs
+    allow_origins=[origins],# For production, this should be a specific list of frontend URLs
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
