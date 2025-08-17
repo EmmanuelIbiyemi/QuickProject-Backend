@@ -15,9 +15,6 @@ app = FastAPI(
 )
 
 origins =[
-    "http://localhost:5173/",
-    "https://quick-project-frontend.vercel.app/"
-    "https://quick-project-front-git-1a5517-ibiyemiemmanuel68-3375s-projects.vercel.app/",
     "*"
 ]
 
